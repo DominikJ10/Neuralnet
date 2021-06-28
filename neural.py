@@ -13,18 +13,18 @@ net = tensorflow.keras.Sequential()
 input_shape = (28, 28, 1)
 kernel_size = (3, 3)
 
-net.add(Conv2D(64, kernel_size, input_shape=input_shape))
+net.add(Conv2D(64, kernel_size, input_shape=input_shape)) 
 net.add(MaxPool2D(pool_size=(2, 2)))
 net.add(Activation('relu'))
 net.add(Flatten())
 
-net.add(Dense(128, activation='relu'))
-net.add(Dense(27, activation='softmax'))
+net.add(Dense(128, activation='relu')) #warstwa ukryta - 128
+net.add(Dense(27, activation='softmax')) #warstwa wyjściowa
 
 
-(X_train, y_train), (X_test, y_test) = emnist.load_data(type='letters')
-X_train = X_train.reshape(-1, 28, 28, 1)
-X_test = X_test.reshape(-1, 28, 28, 1)
+(X_train, y_train), (X_test, y_test) = emnist.load_data(type='letters') #załaduj emnist 'letters'
+X_train = X_train.reshape(-1, 28, 28, 1) 
+X_test = X_test.reshape(-1, 28, 28, 1) #matryca obrazka
 y_train_cat = to_categorical(y_train)
 y_test_cat = to_categorical(y_test)
 X_train = X_train.astype('float32')
